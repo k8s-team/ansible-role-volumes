@@ -6,8 +6,11 @@ destFolder: "{{ ansible_env.HOME }}/.k8s-team/pv"
 
 metaName: metaName
 storageClassName: storageClassName
-capacity: 1Gi
+storage: 1Gi
 path: '/mnt/pv'
+mode: 0644
+owner: root
+group: root
 
 nodeAffinity:
   enabled: false

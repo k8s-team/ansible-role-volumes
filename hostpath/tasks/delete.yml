@@ -1,7 +1,7 @@
 ---
 
 - set_fact:
-    volume_file: "{{ destFolder }}/volume-{{ storageClassName }}-{{ metaName }}-{{ capacity }}.yaml"
+    volume_file: "{{ destFolder }}/volume-{{ storageClassName }}-{{ metaName }}-{{ storage }}.yaml"
 
 - name: Unnstall volume
   k8s:
