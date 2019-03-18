@@ -1,0 +1,8 @@
+---
+# tasks file for volume
+
+- include_tasks: create.yml
+  when: state == 'present'
+
+- include_tasks: delete.yml
+  when: state == 'absent'

@@ -1,0 +1,23 @@
+---
+- name: Ensures {{ destFolder }} dir exists
+  file:
+    path: "{{ destFolder }}"
+    state: directory
+
+- set_fact:
+    volume_file: "{{ destFolder }}/volume-{{ storageClassName }}-{{ metaName }}-{{ capacity }}.yaml"
+
+- name: Create volume file {{ volume_file }}
+  template:
+    src: volume.yaml
+    dest: "{{ volume_file }}"
+
+- name: Ensures volume path {{ path }} exists
+  file:
+    path: "{{ path }}"
+    state: directory
+
+- name: Install Volume
+  k8s:
+    state: present
+    src: "{{ volume_file }}"

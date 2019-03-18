@@ -1,0 +1,14 @@
+---
+# defaults file for volume
+
+state: present
+destFolder: "{{ ansible_env.HOME }}/.k8s-team/pv"
+
+metaName: metaName
+storageClassName: storageClassName
+capacity: 1Gi
+path: '/mnt/pv'
+
+nodeAffinity:
+  enabled: false
+  nodes: [node,]

@@ -1,0 +1,24 @@
+---
+
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: {{ metaName }}
+spec:
+  storageClassName: {{ storageClassName }}
+  capacity:
+    storage: {{ capacity }}
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: {{ path }}
+
+  {% if nodeAffinity.enabled %}
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values: {{ nodeAffinity.nodes }}
+  {% endif %}
